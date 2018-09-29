@@ -112,3 +112,9 @@ RUN /opt/tools/android-accept-licenses.sh "$ANDROID_HOME/tools/bin/sdkmanager \
 
 VOLUME ["/app"]
 WORKDIR /app
+
+CMD bash
+
+#docker pull land007/react-native ; 
+#docker stop react-native ; docker rm react-native ; docker run -it --privileged --name react-native land007/react-native:latest
+
