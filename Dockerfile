@@ -1,11 +1,14 @@
-FROM library/ubuntu:16.04
+#FROM library/ubuntu:16.04
+FROM land007/ubuntu-unity-novnc:latest
+
+MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
 # https://github.com/facebook/react-native/blob/8c7b32d5f1da34613628b4b8e0474bc1e185a618/ContainerShip/Dockerfile.android-base
 
 # set default build arguments
 ARG ANDROID_TOOLS_VERSION=25.2.5
 ENV NPM_CONFIG_LOGLEVEL info
-ARG NODE_VERSION=9.5.0
+ARG NODE_VERSION=10.15.0
 
 
 # set default environment variables
@@ -61,8 +64,11 @@ RUN set -ex \
 		DD8F2338BAE7501E3DD5AC78C273792F7D83545D \
 		C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
 		B9AE9905FFD7803F25714661B63B535A4C206CA9 \
-		56730D5401028683275BD23C23EFEFE93C4CFFFE \
 		77984A986EBC2AA786BC0F66B01FBB92821C587A \
+		8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \
+		4ED778F539E3634C779C87C6D7062848A1AB005C \
+		A48C2BEE680E841632CD4E44F07496B3EB3C1762 \
+		B9E2F5981AA6E0CD28160D9FF13993A75599653C \
 	; do \
 		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
 	done && \
@@ -112,9 +118,3 @@ RUN /opt/tools/android-accept-licenses.sh "$ANDROID_HOME/tools/bin/sdkmanager \
 
 VOLUME ["/app"]
 WORKDIR /app
-
-CMD bash
-
-#docker pull land007/react-native ; 
-#docker stop react-native ; docker rm react-native ; docker run -it --privileged --name react-native land007/react-native:latest
-
